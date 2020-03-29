@@ -2,23 +2,52 @@ package com.api.calculation.service;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 public class CalculatorMockTest {
 
-    @InjectMocks
-    CalculatorService calculator;
+    @Mock
+    CalculatorService calcMock;
+
+    @Spy
+    CalculatorService calcSpy;
+
+    @Before
+    public void setup(){
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void mockData(){
-        calculator = Mockito.mock(CalculatorService.class);
-        Mockito.when(calculator.sum(Mockito.anyInt(), Mockito.anyInt())).thenReturn(4);
+        calcMock = Mockito.mock(CalculatorService.class);
+        Mockito.when(calcMock.sum(Mockito.anyInt(), Mockito.anyInt())).thenReturn(4);
     }
 
     @Test
     public void mockFixedData(){
-        calculator = Mockito.mock(CalculatorService.class);
-        Mockito.when(calculator.sum(Mockito.eq(2), Mockito.anyInt())).thenReturn(4);
+        calcMock = Mockito.mock(CalculatorService.class);
+        Mockito.when(calcMock.sum(Mockito.eq(2), Mockito.anyInt())).thenReturn(4);
     }
+
+    @Test
+    public void MockReturnValuePattern(){
+        Mockito.when(calcMock.sum(1,2)).thenReturn(0);
+        Mockito.when(calcSpy.sum(1,2)).thenReturn(3);
+
+        System.out.println("Mock " + calcMock.sum(1,2));
+        System.out.println("Spy " + calcSpy.sum(1,2));
+    }
+
+    @Test
+    public void differenceBetweenMockAndSpy(){
+        Mockito.when(calcMock.sum(1,2)).thenCallRealMethod();
+        Mockito.when(calcSpy.sum(1,2)).thenReturn(3);
+
+        System.out.println("Mock " + calcMock.sum(1,2));
+        System.out.println("Spy " + calcSpy.sum(1,2));
+    }
+    
 }
