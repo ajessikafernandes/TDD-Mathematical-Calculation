@@ -2,17 +2,22 @@
 
 Programa criado com intuito de praticar os ensinamentos do curso de Testes Unitários em JAVA com Junit, usando a prática de TDD. 
 
-# Montando ambiente: 
+## Pré-requisitos
 
-Baixar o Java 11.
+Java 11.
 
-Baixar o projeto usando o comando git clone
+Maven.
 
-Tenha o maven instalado em sua máquina.
+### Montando ambiente:
 
-Na linha de comando e na raiz do projeto, gerar o jar do projeto:
+Baixar o projeto usando o comando git clone.
+
+Executando pela linha de comando na pasta da raiz do projeto, crie o jar do projeto: 
+```
 ./mvnw clean install
+```
 
-Para executar os testes unitários, usar o comando:
+Para executar os testes unitários, use o comando: 
+```
 ./mvnw test
-
+```
