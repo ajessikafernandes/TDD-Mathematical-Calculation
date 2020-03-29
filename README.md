@@ -6,7 +6,7 @@ Programa criado com intuito de praticar os ensinamentos do curso de Testes Unit√
 
 Baixar o Java 11.
 
-Baixar o usando o comando git clone
+Baixar o projeto usando o comando git clone
 
 Na linha de comando e na raiz do projeto, gerar o jar do projeto:
 ./mvnw clean install
